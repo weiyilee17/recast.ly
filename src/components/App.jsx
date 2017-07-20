@@ -1,17 +1,21 @@
 class App extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       currentVideoIndex: 0
     }
+
+    // `this` binding is set to App instance to access setState
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  onListItemClick() {
+  handleClick(newIndex) {
+    newIndex = newIndex || 0;
     this.setState({
-      currentVideoIndex: 1//new clicked index
+      currentVideoIndex: newIndex
     });
   }
+
   render () {
     return (
     <div>
@@ -25,7 +29,7 @@ class App extends React.Component {
           <VideoPlayer video={exampleVideoData[this.state.currentVideoIndex]}/>
         </div>
         <div className="col-md-5">
-          <VideoList videos={exampleVideoData}/>
+          <VideoList eventHandler={this.handleClick} videos={exampleVideoData}/>
         </div>
       </div>
     </div>

@@ -1,5 +1,4 @@
 var VideoPlayer = (props) => {
-  console.log('props', props);
   var youtube = 'https://www.youtube.com/embed/';
   var embed = props.video.id.videoId;
   return (
