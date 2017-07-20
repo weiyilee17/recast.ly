@@ -1,5 +1,3 @@
-
-    //<div><h5><em>{props.vlist.map( (video, index) => <VideoListEntry video={video} key={index} />)}</em> view goes here</h5></div>
 var VideoList = (props) => (
   <div className="video-list">
     {props.videos.map( (video, index) => <VideoListEntry video={video} key={index} />)}
@@ -17,4 +15,4 @@ VideoList.propTypes = {
 window.VideoList = VideoList;
 
 
-//ReactDOM.render(<VideoList />, document.getElementsByClassName("col-md-5")[0])
+//  ReactDOM.render(<VideoList videos={exampleVideoData}/>, document.getElementsByClassName("col-md-5")[0])
