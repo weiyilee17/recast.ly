@@ -1,6 +1,9 @@
 var searchYouTube = (options, callback) => {
   // TODO
-  options.query = options.query || $('.form-control').val();
+  let _input = $('.form-control').val();
+  _input = _input || '';
+  options.query = _input.length > 0?_input:options.query;
+
   $.ajax({
     url: `https://www.googleapis.com/youtube/v3/search?q=${options.query}&maxResults=${options.max}&key=${options.key}&part=snippet`,
     type: 'GET',
