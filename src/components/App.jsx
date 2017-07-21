@@ -5,7 +5,7 @@ class App extends React.Component {
       currentVideoIndex: 0,
       videos: exampleVideoData,
       options: {
-        query: 'dogs',
+        query: undefined,
         max: 5,
         key: `${YOUTUBE_API_KEY}`
       }
@@ -13,6 +13,13 @@ class App extends React.Component {
 
     // `this` binding is set to App instance to access setState
     this.handleClick = this.handleClick.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
+  }
+
+  handleSearch(videos) {
+    this.setState({
+      videos: videos
+    });
   }
 
   handleClick(newIndex) {
@@ -23,12 +30,11 @@ class App extends React.Component {
   }
 
   render () {
-    console.log(searchYouTube)
     return (
     <div>
       <nav className="navbar">
         <div className="col-md-6 offset-md-3">
-          <Search searchHandler={searchYouTube} appState = {this.state}/>
+          <Search searchHandler={this.handleSearch} appState = {this.state}/>
         </div>
       </nav>
       <div className="row">

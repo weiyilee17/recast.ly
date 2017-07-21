@@ -1,6 +1,7 @@
 var VideoPlayer = (props) => {
   var youtube = 'https://www.youtube.com/embed/';
   var embed = props.video.id.videoId;
+  
   return (
     <div className="video-player">
       <div className="embed-responsive embed-responsive-16by9">
