@@ -2,8 +2,14 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentVideoIndex: 0
-    }
+      currentVideoIndex: 0,
+      videos: exampleVideoData,
+      options: {
+        query: 'dogs',
+        max: 5,
+        key: `${YOUTUBE_API_KEY}`
+      }
+    };
 
     // `this` binding is set to App instance to access setState
     this.handleClick = this.handleClick.bind(this);
@@ -17,23 +23,24 @@ class App extends React.Component {
   }
 
   render () {
+    console.log(searchYouTube)
     return (
     <div>
       <nav className="navbar">
         <div className="col-md-6 offset-md-3">
-          <div><h5><em>search</em> view goes here</h5></div>
+          <Search searchHandler={searchYouTube} appState = {this.state}/>
         </div>
       </nav>
       <div className="row">
         <div className="col-md-7">
-          <VideoPlayer video={exampleVideoData[this.state.currentVideoIndex]}/>
+          <VideoPlayer video={this.state.videos[this.state.currentVideoIndex]}/>
         </div>
         <div className="col-md-5">
-          <VideoList eventHandler={this.handleClick} videos={exampleVideoData}/>
+          <VideoList eventHandler={this.handleClick} videos={this.state.videos}/>
         </div>
       </div>
     </div>
-  );
+    );
   }
 }
 
